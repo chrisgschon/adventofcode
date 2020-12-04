@@ -40,7 +40,7 @@ def day1_part2(inp):
 
 def day2_part1_test_single(i):
     instance_range, letter, password = i.replace(':', '').split(' ')
-    instance_range_lower, instance_range_upper = [int(i) for i in                                                                   instance_range.split('-')]
+    instance_range_lower, instance_range_upper = [int(i) for i in instance_range.split('-')]
     letter_instance_in_password = len([i for i in password if i == letter])
     passed = 1 if (letter_instance_in_password <= instance_range_upper
                   and letter_instance_in_password >= instance_range_lower) \
