@@ -1,5 +1,5 @@
 from functools import reduce
-
+import re
 
 def load_input_as_list(day):
     with open(f"input_data/input_day{day}.txt", "r") as f:
