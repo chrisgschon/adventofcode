@@ -6,8 +6,8 @@ from functools import reduce
 import re
 from collections import Counter
 
-def load_input_as_list(day):
-    with open(f"input_day{day}.txt", "r") as f:
+def load_input_as_list(filepath):
+    with open(filepath, "r") as f:
         raw = f.readlines()
     inp = [i.replace('\n', '') for i in raw]
     return inp
