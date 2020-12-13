@@ -86,11 +86,14 @@ class Ferry:
             self.waypoint_direction_updater(nav_key, nav_value)
     
         
-            
+import os,sys,inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0,parentdir) 
+from utils import load_input_as_list 
 
-    
-            
-
+inp = load_input_as_list('input_day12.txt')
+        
 f = Ferry()
 
 for i in inp:
