@@ -39,3 +39,63 @@ def day14_part1(inp):
             mem_address_dict[a[0]] = new_value
     mem_sum = sum([bit36_to_int(v) for _, v in mem_address_dict.items()])
     return mem_sum
+
+
+def floating_value_generator(v):
+    new_v=[]
+    for s in v:
+        x= s.find('X')
+        if x==-1:
+            pass
+        s1 = s[:x] + '1' + s[x + 1:]
+        s2 = s[:x] + '0' + s[x + 1:]
+        new_v.append(s1)
+        new_v.append(s2)
+    #any left?
+    lft=new_v[0].find('X')
+    if lft!=-1:
+        new_v=floating_value_generator(new_v)
+    return new_v
+
+def floating_program_resolver(value, mask):
+    """pass bit value and mask, 
+    return value"""
+    s = ''
+    for i in range(len(value)):
+        if mask[i] == '0':
+            s+=value[i]
+        elif mask[i] == 'X':
+            s+='X'
+        elif mask[i] == '1':
+            s+='1'
+    
+    multi_s=floating_value_generator([s])
+    f=[]
+    for x in multi_s:
+        f.append([x, bit36_to_int(x)])
+    return f
+
+
+def day14_part2(inp):
+    init_prog = parse(inp)
+    mem_address_dict = {}
+    for i in init_prog:
+        mask = i['mask']
+        for a in i['alloc']:
+            value = int_to_bit36(a[0])
+            new_values = floating_program_resolver(value, mask)
+            for v in new_values:
+                mem_address_dict[v[1]] = a[1]
+    return(sum(mem_address_dict.values()))
+            
+
+import os,sys,inspect
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0,parentdir) 
+from utils import load_input_as_list 
+
+inp = load_input_as_list('input_day14.txt')
+
+print(f'Part one solution: {day14_part1(inp)}')
+print(f'Part two solution: {day14_part2(inp)}')
