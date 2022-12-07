@@ -14,5 +14,9 @@ for item in input:
         elf_number += 1
         
 key_max_calories_elf = sorted(elf_calories_dict, key=elf_calories_dict.get)[-1]
-print(f'Day one answer: {elf_calories_dict[key_max_calories_elf]}')
+print(f'Day 1 part 1 answer: {elf_calories_dict[key_max_calories_elf]}')
+
+key_max_calories_elfs = sorted(elf_calories_dict, key=elf_calories_dict.get)[-3:]
+answer = sum([elf_calories_dict[key] for key in key_max_calories_elfs])
+print(f'Day 1 part 2 answer: {answer}')
     
