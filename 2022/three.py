@@ -24,19 +24,3 @@ group_shared_items = [list(set(a).intersection(set(b)).intersection(set(c)))[0] 
 sum_of_shared_items = [priority_score_map[i] for i in group_shared_items]
 print(f'Day 3 part 2 answer: {sum(sum_of_shared_items)}')
 
-
-
-
-                
-
-            
-            
-            
-            
-
-# rucksacks_dupe_items = [j for i in rucksacks for j in i[0] if j in i[1]]
-
-# print(set(rucksacks_dupe_items))
-
-
-
